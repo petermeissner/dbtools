@@ -1,0 +1,30 @@
+Package: dbtools
+Type: Package
+Title: Tooling Around Database Querying
+Date: 2018-10-08
+Version: 0.1.0
+Authors@R: c(
+        person(
+          "Peter", "Meissner", role = c("aut", "cre"),
+          email = "retep.meissner@gmail.com"
+        )
+	   )
+Description: Provides tooling around database querying and using DBI compliant
+    packages. The aim of the package is to make data base interaction and SQL 
+    code generation more convenient and robust. Thus the package aims to provide
+    wrappers and helpers that enhance already existing tools from packages like
+    DBI and glue and to bundle some database interaction utility functions in 
+    one place. 
+License: MIT + file LICENSE
+LazyData: TRUE
+BugReports: https://github.com/petermeisser/dbtools/issues
+URL: https://github.com/petermeisser/dbtools
+Imports:
+    DBI (>= 1.0.0),
+    glue (>= 1.3.0),
+    rlist (>= 0.4.6.1),
+    magrittr 
+Depends:
+    R (>= 3.0.0)
+RoxygenNote: 6.1.0
+Encoding: UTF-8
