@@ -4,7 +4,8 @@
 \alias{dbt_hlp_progress}
 \title{dbt_hlp_progress}
 \usage{
-dbt_hlp_progress(i = NULL, ii = NULL, start = NULL, redraw = FALSE)
+dbt_hlp_progress(i = NULL, ii = NULL, start = NULL, redraw = FALSE,
+  now = Sys.time())
 }
 \arguments{
 \item{i}{ith iteration / item / job / query}
