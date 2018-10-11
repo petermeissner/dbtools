@@ -1,4 +1,4 @@
-#' sql
+#' dbt_sql
 #'
 #'
 #' @param query_string a (character) vector or SQL to be either marked as SQL or
@@ -13,8 +13,8 @@
 #'
 #'
 setGeneric(
-  name = "sql",
-  def  = function(query_string, ...) standardGeneric("sql")
+  name = "dbt_sql",
+  def  = function(query_string, ...) standardGeneric("dbt_sql")
 )
 
 
@@ -23,7 +23,7 @@ setGeneric(
 #' @rdname hidden_aliases
 #' @export
 setMethod(
-  f          = "sql",
+  f          = "dbt_sql",
   signature  =
     signature(
       query_string = "ANY"
@@ -43,7 +43,7 @@ setMethod(
 #' @rdname hidden_aliases
 #' @export
 setMethod(
-  f          = "sql",
+  f          = "dbt_sql",
   signature  =
     signature(
       query_string = "SQL"
