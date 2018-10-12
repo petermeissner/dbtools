@@ -57,6 +57,24 @@ setMethod(
 )
 
 
+#' @rdname hidden_aliases
+#' @export
+setMethod(
+  f          = "dbt_sql",
+  signature  =
+    signature(
+      query_string = "missing"
+    ),
+
+  definition =
+    function(query_string, ...) {
+      # paste together string, mark as SQL and return
+      DBI::SQL(glue::glue(NULL, ...))
+    }
+)
+
+
+
 
 
 
