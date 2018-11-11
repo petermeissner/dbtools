@@ -14,6 +14,9 @@ dbt_hlp_progress(i = NULL, ii = NULL, start = NULL, redraw = FALSE,
 
 \item{start}{start time}
 }
+\value{
+nothing called for side effects
+}
 \description{
 dbt_hlp_progress
 }

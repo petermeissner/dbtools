@@ -4,7 +4,7 @@
 #' @param ii number of iterations / ... in total
 #' @param start start time
 #'
-#' @return
+#' @return nothing called for side effects
 #' @export
 #'
 #' @examples
@@ -29,7 +29,7 @@ dbt_hlp_progress <-
     }
 
     if( !is.null(start) ){
-      cat(" | elapsed:",as.character(hms::as.hms(round(difftime(now, start, units="sec")))))
+      cat(" | elapsed:", as.character(hms::as.hms(round(difftime(now, start, units = "sec")))))
     }
 
     if( !is.null(start) & !is.null(i) & !is.null(ii)){

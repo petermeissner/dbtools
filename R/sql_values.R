@@ -4,7 +4,7 @@ NULL
 setClassUnion("missingOrNULL", c("missing", "NULL"))
 
 
-#' sqlValues
+#' sql_values
 #'
 #' A function to generate SQL value lists, to be used with sql values keyword:
 #'   "\code{VALUES (1,2), (1,3), (2,7)}".
@@ -23,25 +23,26 @@ setClassUnion("missingOrNULL", c("missing", "NULL"))
 #' @examples
 #'
 #' #' # SQL VALUES list from vector
-#' sqlValues(ANSI(), letters)
-#' sqlValues(ANSI(), 4L:7L)
-#' sqlValues(ANSI(), 1.3:7.1)
-#' sqlValues(ANSI(), rep(Sys.time(), 10))
+#' sql_values(letters)
+#' sql_values(4L:7L)
+#' sql_values(1.3:7.1)
+#' sql_values(rep(Sys.time(), 10))
 #'
 #' # SQL VALUES list from data.frame like
-#' sqlValues(ANSI(), data.frame(letters, seq_along(letters), Sys.time()))
+#' sql_values(data.frame(letters, seq_along(letters), Sys.time()))
+#' sql_values(data.frame(letters, seq_along(letters), Sys.time()), conn = DBI::ANSI())
 #'
 #'
 setGeneric(
-  name = "sqlValues",
-  def  = function(x, ..., val_sep = "\n", conn = NULL) standardGeneric("sqlValues")
+  name = "sql_values",
+  def  = function(x, ..., val_sep = "\n", conn = NULL) standardGeneric("sql_values")
 )
 
 #' @rdname hidden_aliases
 #' @export
 #' @import DBI
 setMethod(
-  f          = "sqlValues",
+  f          = "sql_values",
   signature  =
     signature(
       x    = "ANY",
@@ -64,7 +65,7 @@ setMethod(
 #' @export
 #' @import DBI
 setMethod(
-  f          = "sqlValues",
+  f          = "sql_values",
   signature(
     x    = "vector",
     conn = "DBIConnection"
@@ -87,7 +88,7 @@ setMethod(
 #' @rdname hidden_aliases
 #' @export
 setMethod(
-  f          = "sqlValues",
+  f          = "sql_values",
   signature  =
     signature(
       x    = "data.frame",
