@@ -1,0 +1,62 @@
+#' sql_wherify
+#'
+#' Function that adds where clauses to sql strings.
+#'
+#' @param sql one or more querry strings
+#' @param .params a list of named parameters
+#'
+#' @export
+#'
+#' @examples
+#'
+#' sql_wherify("select * from mytable", list(a = 1, b = 1:10))
+#' sql_wherify("select * from mytable", list(from))
+#'
+#'
+sql_wherify <-
+  function(sql = character(0), ..., .params = NULL, con = DBI::ANSI()){
+
+    # gather parameter
+    .params <- c(list(...), .params)
+
+    # check if any parameter set than add to where clause
+    if ( !any( vapply(.params, is.null, logical(1)) ) ){
+
+      # where clauses
+      i <- 0
+      for (var in names(.params) ) {
+
+        # general overhead
+        if( i == 0 ){
+          i   <- 1
+          sql <- glue::glue(sql, "\n  where \n")
+        } else {
+          sql <- glue::glue(sql, "\n  and \n")
+        }
+
+        # transform to character if needed
+        if ( any(class(.params[[var]]) %in% c("Date", "POSIXt")) ){
+          .params[[var]] <- as.character(.params[[var]])
+        }
+
+        # add specific where clauses
+        if( var %in% c("from")){
+
+          sql <- glue::glue(sql, "from >= {DBI::sqlData(con, .params[[var]])}")
+
+        } else if( var %in% c("to")){
+
+          sql <- glue::glue(sql, "from <= {.params$to}")
+
+        } else {
+
+
+
+        }
+      }
+    }
+
+    # return
+    sql
+  }
+
